@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "ImageUpload";
+}
+
+<h2>Image Upload</h2>
+<form method="post" action="@Url.Action("ImageUpload","Image")" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <td>Upload Files: </td>
+        </tr>
+        <tr>
+            <td><input type="file" name="fileBase" class="form-control" multiple /></td>
+        </tr>
+        <tr>
+            <td><button id="btnsave" class="btn btn-primary" type="submit">Upload Images</button></td>
+        </tr>
+
+        <tr>
+            <td colspan="3">
+                @if (ViewBag.error != null)
+                {
+                    <div class="alert alert-danger">
+                        @ViewBag.error
+                    </div>
+                }
+
+                else if (ViewBag.message != null)
+                {
+                    <div class="alert alert-success">
+                        @ViewBag.message
+                    </div>
+
+                }
+            </td>
+        </tr>
+    </table>
+</form>
+<br />
+<br />
+<br />
+
+@foreach (var item in ViewBag.files)
+{
+    <div class="col-md-3">
+        <img src="@item" class="img-thumbnail" width="250" height="150" />
+        <br />
+        <br />
+    </div>
+}
+
